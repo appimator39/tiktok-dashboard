@@ -16,8 +16,9 @@ const logoDark = computed(() => preferences.logo.sourceDark);
     :app-name="appName"
     :logo="logo"
     :logo-dark="logoDark"
-    :page-description="$t('authentication.pageDesc')"
-    :page-title="$t('authentication.pageTitle')"
+    page-description="Plug-and-play control for TikTok downloads, languages, and content."
+    page-title="TikTokIO Admin Console"
+    slogan-image="/tiktok-login.svg"
   >
     <!-- 自定义工具栏 -->
     <!-- <template #toolbar></template> -->

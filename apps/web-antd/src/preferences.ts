@@ -9,5 +9,19 @@ export const overridesPreferences = defineOverridesPreferences({
   // overrides
   app: {
     name: import.meta.env.VITE_APP_TITLE,
+    defaultHomePath: '/admin/dashboard',
+    locale: 'en-US',
+    enableRefreshToken: false,
+  },
+  widget: {
+    languageToggle: false,
+    themeToggle: true,
+  },
+  theme: {
+    mode: 'light',
+    radius: '0.6',
+  },
+  navigation: {
+    styleType: 'rounded',
   },
 });
