@@ -8,6 +8,7 @@ WORKDIR /app
 # Copy workspace manifests first for layer caching
 COPY package.json pnpm-workspace.yaml pnpm-lock.yaml ./
 COPY packages/ packages/
+COPY internal/ internal/
 COPY apps/web-antd/package.json apps/web-antd/
 COPY scripts/ scripts/
 
