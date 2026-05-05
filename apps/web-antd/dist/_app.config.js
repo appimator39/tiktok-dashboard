@@ -1,0 +1,1 @@
+window._VBEN_ADMIN_PRO_APP_CONF_={"VITE_GLOB_API_URL":"http://pyrfwdlvdkkumb46xfx4dwb8.77.42.71.248.sslip.io"};Object.freeze(window._VBEN_ADMIN_PRO_APP_CONF_);Object.defineProperty(window,"_VBEN_ADMIN_PRO_APP_CONF_",{configurable:false,writable:false,});

@@ -1,30 +1,7 @@
-FROM node:20-alpine AS builder
-
-# Install pnpm
-RUN npm install -g pnpm@10.28.2
-
-WORKDIR /app
-
-# Copy workspace manifests first for layer caching
-COPY package.json pnpm-workspace.yaml pnpm-lock.yaml ./
-COPY packages/ packages/
-COPY internal/ internal/
-COPY apps/web-antd/package.json apps/web-antd/
-COPY scripts/ scripts/
-
-# Install all dependencies
-RUN pnpm install --frozen-lockfile
-
-# Copy full source
-COPY . .
-
-# Build only the web-antd app
-RUN pnpm run build --filter=@vben/web-antd
-
-# Serve with nginx
 FROM nginx:alpine
 
-COPY --from=builder /app/apps/web-antd/dist /usr/share/nginx/html
+# Copy pre-built dist (built locally via: pnpm run build --filter=@vben/web-antd)
+COPY apps/web-antd/dist /usr/share/nginx/html
 
 # SPA fallback — all routes serve index.html
 RUN printf 'server {\n\
@@ -33,6 +10,10 @@ RUN printf 'server {\n\
   index index.html;\n\
   location / {\n\
     try_files $uri $uri/ /index.html;\n\
+  }\n\
+  location ~* \\.(js|css|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf|eot)$ {\n\
+    expires 1y;\n\
+    add_header Cache-Control "public, immutable";\n\
   }\n\
 }\n' > /etc/nginx/conf.d/default.conf
 

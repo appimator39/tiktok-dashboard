@@ -1,0 +1,1 @@
+import{cg as t}from"./bootstrap-DGEhHqPZ.js";function e(){return t.get("/admin/api/stats")}function i(){return t.get("/admin/api/recent-downloads")}function r(a){return t.get("/admin/api/activity-log",{params:a})}function s(a){return t.get("/admin/api/analytics-data",{params:{period:a}})}export{s as a,e as b,i as c,r as g};

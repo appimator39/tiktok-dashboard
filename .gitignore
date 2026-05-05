@@ -1,6 +1,7 @@
 node_modules
 .DS_Store
 dist
+!apps/web-antd/dist
 dist-ssr
 dist.zip
 dist.tar

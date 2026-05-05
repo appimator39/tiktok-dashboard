@@ -6,11 +6,11 @@ export default defineConfig(async () => {
     vite: {
       server: {
         proxy: {
-          '/api': {
+          // Proxy /admin/* to live admin backend so session cookies stay
+          // same-origin (localhost:3010) and Flask-Login sessions work in dev.
+          '/admin': {
             changeOrigin: true,
-            rewrite: (path) => path.replace(/^\/api/, ''),
-            // mock代理目标地址
-            target: 'http://localhost:5320/api',
+            target: 'http://pyrfwdlvdkkumb46xfx4dwb8.77.42.71.248.sslip.io',
             ws: true,
           },
         },
